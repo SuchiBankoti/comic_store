@@ -1,0 +1,49 @@
+
+
+.library{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.library-sidebar{
+    width:20%;
+    background-color: rgb(95, 103, 139);
+}
+.library-mainpage{
+    width:80%;
+    background-color: rgba(202, 200, 200, 0.233);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+
+.front-page{
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:whitesmoke;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    height:50px;
+    width:100%;
+}
+nav>h1{
+    margin:0;
+   width:15%;
+   background-color:rgb(188, 210, 243); 
+}
+
+.navbar-right{
+    display: flex;
+    width:25%;
+    background-color:rgb(188, 210, 243); 
+}
+
+
+

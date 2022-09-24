@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import Book from "./Book";
 import { Link } from "react-router-dom"
 import { useContext } from "react";
 import { LibraryContext } from "./Contexts/LibraryContext";
-import Navbar from "./Navbar";
+import SignUpForm from "./SignUpForm";
 
 
 
 export default function FrontPage() {
 
 
-    const { search } = useContext(LibraryContext)
+    const { search, signingIn } = useContext(LibraryContext)
 
     const [searchVar, setSearchVar] = useState("")
     function getSearch(event) {
@@ -19,23 +18,25 @@ export default function FrontPage() {
 
     return (
         <div className="front-page">
-            <h1><Link to="/Library">Browse our collection</Link></h1>
+            {signingIn ? <SignUpForm className="signform" /> : ""}
+            <div>
+                <Link to="/Library" className="link">Browse Our Collection</Link>
+
+            </div>
             <div className="search-bar">
                 <div className="bar">
                     <form>
                         <label>
                             <input className="search"
                                 type="text"
-                                placeholder="Search..."
+                                placeholder="Search by the Title or the Author"
                                 value={searchVar}
                                 onChange={getSearch}
                             />
                         </label>
                     </form>
                 </div>
-                <div className="search-button">
-                    <Link to="/searchBook"><button onClick={() => search(searchVar)} className="search-btn">search</button></Link>
-                </div>
+                <button onClick={() => search(searchVar)} className="search-btn"></button>
             </div>
         </div>
 

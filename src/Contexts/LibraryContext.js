@@ -45,9 +45,21 @@ function LibraryProvider(props) {
         data = data.filter(obj => obj.id === id)
         setBuy(data)
     }
+    const [genreArr, setGenreArr] = useState(books)
+    function sortByGenre(value) {
+        if (value === "All") {
+            setGenreArr(books)
+        }
+        else {
+            let newArr = books.filter(obj => obj.genre.find(element => element === value))
+            setGenreArr(newArr)
+        }
+    }
+
+
     return <context.Provider value={{
         books, add, remove, status, search, findBook, signIn,
-        signInData, buy, buyBook
+        signInData, buy, buyBook, sortByGenre, genreArr
     }}>
         {props.children}
     </context.Provider>

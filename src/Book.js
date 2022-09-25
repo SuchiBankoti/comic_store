@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { LibraryContext } from "./Contexts/LibraryContext";
+import { FaReadme } from "react-icons/fa";
 export default function Book(props) {
     const { status, buyBook } = useContext(LibraryContext)
     const Book = props.book
@@ -10,12 +11,21 @@ export default function Book(props) {
             {Book ?
                 <>
                     <img alt="cover" className="cover-image" src={process.env.PUBLIC_URL + `Images/${Book.bookCover}`} />
-                    <div>{Book.title}</div>
-                    <div>{Book.author}</div>
                     <div>
-                        <button onClick={() => status(Book.id)} style={{ background: Book.read ? "red" : "grey" }} className="read-btn"></button>
-                        <div onClick={() => { buyBook(Book.id) }}><Link to="/buybook">Buy Book</Link></div>
+                        <div className="title" onClick={() => { buyBook(Book.id) }}>
+                            <Link to="/buybook" className="link">{Book.title}</Link>
+                        </div>
+                        <div className="author">{Book.author}</div>
                     </div>
+                    <div>
+
+                        <div style={{ color: Book.read ? "pink" : "cadetblue" }}>
+                            <FaReadme onClick={() => status(Book.id)} style={{ color: Book.read ? "#fd5e79" : "#306264" }} className="read-btn" />
+                            {Book.read ? "Currently reading" : "Read Me"}
+                        </div>
+
+                    </div>
+
                 </>
 
                 :

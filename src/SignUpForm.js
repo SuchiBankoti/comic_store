@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom"
 import { LibraryContext } from "./Contexts/LibraryContext";
 
 
@@ -38,7 +37,7 @@ export default function SignUpForm() {
                 />
 
             </form>
-            <Link to="/"><button onClick={() => signIn(signUpData)}>Submit</button></Link>
+            <button onClick={() => signIn(signUpData)}>Submit</button>
         </div>
 
     )

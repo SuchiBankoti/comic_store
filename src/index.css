@@ -10,7 +10,7 @@
 .main{
     display: flex;
     flex-direction: column;
-    padding:20px;
+    padding:10px;
     background-color:#fff;
     border: 1px solid #fff;
     border-radius: 10px;
@@ -22,29 +22,25 @@
 .navbar>div{
     display: flex;
     width:25%;
-    justify-content: space-around;
     align-items: center;
+    justify-content: end;
+    padding:10px;
 }
-.signIn{
-    width:60%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+
+.navbar>div>img{
+    width:50px;
+    height:50px;
+    padding:10px;
 }
-.signIn>p{
-    font-weight: bold;
-    font-size:x-large;
-    font-family: monospace;
-    color:maroon;
-}
+
 .homeicon{
-    width:40px;
-    height:40px;
-    color:black;
+    width:30px;
+    height:30px;
+    color:rgb(245, 126, 146);
 }
 .link{
     text-decoration: none;
-    color:black;
+    color:rgb(53, 50, 50);
 }
 
 .front-page{
@@ -58,7 +54,8 @@
     height:50vh;
     justify-content: center;
     align-items: center;
-    background-color: cadetblue;
+    background-image: url("./front.png");
+    background-size: cover;
 }
 .header>div>h1{
     color: aliceblue;
@@ -95,8 +92,16 @@ form{
     margin:5px;
 }
 .footer{
-    background-color: gray;
-    height:20vh;
+    background-color:cadetblue;
+    height:25%;
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+    overflow: hidden;
+}
+.address{
+    width:20%;
+    padding:5px;
 }
 .library{
     display: flex;
@@ -107,7 +112,26 @@ form{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding:10px;
+    text-align: center;
+}
+
+.profile>img{
+    width:50px;
+    height:50px;
+    border:1px solid rgb(223, 216, 216);
+    border-radius:25px;
+}
+.profile>div{
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color:rgb(248, 99, 124)
+}
+.sidebar-footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 25%;
+    color:cadetblue;
 }
 .library>.library-mainpage{
     width:80%;
@@ -117,8 +141,9 @@ form{
     display: grid;
     grid-template-columns:repeat(auto-fit, 150px);
     grid-template-rows: repeat(auto, 250px);
-    grid-gap:10px;
-    
+    grid-gap:20px;
+    padding-left:15px;
+    padding-top:10px;
 }
 .book{
     display: flex;
@@ -126,15 +151,48 @@ form{
     align-items: center;
     padding:5px;
 }
+.cart{
+    margin:auto;
+    padding-top:10px;
+    color: grey;
+}
+.title{
+    font-weight:bold;
+    font-size: large;
+    letter-spacing: 1px;
+    font-family: monospace;
+}
+.author{
+    font-weight: lighter;
+    font-family: 'Courier New', Courier, monospace;
+}
 .book>img{
     height:150px;
     width:100px;
 }
+.book>div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width:100%;
+    padding:5px;
+}
 .filter{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    border:1px solid rgb(216, 213, 213);
 }
-.filter>div{
+.categories{
+    display: flex;
+    padding:5px;
+    width:100%;
+}
+
+.filter>.categories>div{
     flex:1;
+    border:1px solid rgb(216, 213, 213);
+    text-align: center;
 }
 .buy-page{
     display: flex;

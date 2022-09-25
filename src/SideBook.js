@@ -1,24 +1,24 @@
 import React from "react";
 import { useContext } from "react";
 import { LibraryContext } from "./Contexts/LibraryContext";
-export default function SideBook(props) {
+export default function SideBook() {
 
-    const { status } = useContext(LibraryContext)
+    const { status, buy } = useContext(LibraryContext)
+    const Book = buy[0]
 
-    const Book = props.sidebook
     return (
-        <>
-            <img alt="" src={process.env.PUBLIC_URL + `Images/${Book.bookCover}`} />
+        <div>
+            <div><img alt="" src={process.env.PUBLIC_URL + `Images/${Book.bookCover}`} /></div>
             <div className="book-details">
-                <h1 style={{ margin: 0, }}>{Book.title}</h1>
-                <div style={{ fontFamily: "monospace" }}>{Book.author}</div>
-                <div style={{ color: "maroon" }}>{Book.Rating}</div>
-                <div style={{ fontStyle: "italic" }}>{Book.year}</div>
+                <h1>{Book.title}</h1>
+                <div>{Book.author}</div>
+                <div>{Book.Rating}</div>
+                <div>{Book.year}</div>
                 <div>{Book.lang}</div>
                 <div>{Book.About}</div>
                 <button onClick={() => status(Book.id)} style={{ background: Book.read ? "red" : "grey" }} className="read-btn"></button>
             </div>
 
-        </>)
+        </div>)
 
 }

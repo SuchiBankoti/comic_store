@@ -9,9 +9,9 @@ export default function Navbar() {
 
     return (
         <nav className="navbar">
-            <h1>LIBRARY</h1>
-            <div className="navbar-right">
-                <div><Link to="/" ><img className="icon" alt="" src={icon} /></Link></div>
+            <Link to="/Library" className="link"><h1>LIBRARY</h1></Link>
+            <div>
+                <Link to="/" ><img className="icon" alt="" src={icon} /></Link>
                 <div className="signIn" onClick={() => { setSigningIn(true) }}>
                     {signUpData === null ? "Sign Up" : "WELCOME"}
                     <img alt="" src={sign} />

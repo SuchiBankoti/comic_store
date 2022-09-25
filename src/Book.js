@@ -19,7 +19,7 @@ export default function Book(props) {
                     </div>
                     <div>
 
-                        <div style={{ color: Book.read ? "pink" : "cadetblue" }}>
+                        <div style={{ color: Book.read ? "pink" : "cadetblue" }} className="read-status">
                             <FaReadme onClick={() => status(Book.id)} style={{ color: Book.read ? "#fd5e79" : "#306264" }} className="read-btn" />
                             {Book.read ? "Currently reading" : "Read Me"}
                         </div>

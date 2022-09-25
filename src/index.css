@@ -23,7 +23,7 @@
     display: flex;
     width:25%;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     padding:10px;
 }
 
@@ -36,7 +36,12 @@
 .homeicon{
     width:30px;
     height:30px;
-    color:rgb(245, 126, 146);
+    color:burlywood;
+}
+.heart{
+    width:35px;
+    height:45px;
+    padding:5px;
 }
 .link{
     text-decoration: none;
@@ -46,6 +51,7 @@
 .front-page{
     display: flex;
     flex-direction: column;
+    
 }
 
 .header{
@@ -151,11 +157,7 @@ form{
     align-items: center;
     padding:5px;
 }
-.cart{
-    margin:auto;
-    padding-top:10px;
-    color: grey;
-}
+
 .title{
     font-weight:bold;
     font-size: large;
@@ -169,6 +171,10 @@ form{
 .book>img{
     height:150px;
     width:100px;
+}
+.read-status{
+    display: flex;
+    justify-content:center;
 }
 .book>div{
     display: flex;
@@ -222,3 +228,5 @@ form{
 .book-details>p{
     width:50%;
 }
+
+   

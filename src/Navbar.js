@@ -1,18 +1,23 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom"
-import { LibraryContext } from "./Contexts/LibraryContext";
 import sign from "./sign.png"
 import { FaHome } from 'react-icons/fa'
+import SignUpForm from "./SignUpForm";
+
 
 export default function Navbar() {
-    const { setSigningIn } = useContext(LibraryContext)
+
 
     return (
         <nav className="navbar">
             <Link to="/Library" className="link"><h1>LIBRARY</h1></Link>
             <div>
+                <div>
+                    <SignUpForm />
+                </div>
                 <Link to="/" ><FaHome className="homeicon" /></Link>
-                <img alt="" src={sign} onClick={() => { setSigningIn(true) }} />
+
+                <img alt="" src={sign} />
+
             </div>
         </nav>
     )

@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom"
 import { useContext } from "react";
 import { LibraryContext } from "./Contexts/LibraryContext";
-import SignUpForm from "./SignUpForm";
 import Book from "./Book"
 import { FaSearch } from "react-icons/fa";
 
 export default function FrontPage() {
 
-    const { search, signingIn, books } = useContext(LibraryContext)
+    const { search, books } = useContext(LibraryContext)
 
     const [searchVar, setSearchVar] = useState("")
     function getSearch(event) {
@@ -18,10 +17,8 @@ export default function FrontPage() {
     return (
         <div className="front-page">
             <div className="header">
-                {signingIn ? <SignUpForm className="signform" /> : ""}
                 <div>
                     <h1><Link to="/Library" className="link">Browse Our Collection</Link></h1>
-
                 </div>
                 <div className="search-bar">
                     <form>

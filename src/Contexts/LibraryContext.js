@@ -32,12 +32,11 @@ function LibraryProvider(props) {
         setFindBook(Book)
     }
 
-    const [signingIn, setSigningIn] = useState(false)
-    const [signUpData, setSignUpData] = useState(JSON.parse(localStorage.getItem("signIn")))
+    const [signInData, setSignInData] = useState(JSON.parse(sessionStorage.getItem("signIn")))
     function signIn(value) {
-        localStorage.setItem('signIn', JSON.stringify(value))
-        setSignUpData(value)
-        setSigningIn(false)
+        sessionStorage.setItem("signIn", JSON.stringify(value))
+        setSignInData(JSON.parse(sessionStorage.getItem("signIn")))
+        console.log(signInData)
     }
 
     const [buy, setBuy] = useState([books[0]])
@@ -48,7 +47,7 @@ function LibraryProvider(props) {
     }
     return <context.Provider value={{
         books, add, remove, status, search, findBook, signIn,
-        signUpData, signingIn, setSigningIn, buy, buyBook
+        signInData, buy, buyBook
     }}>
         {props.children}
     </context.Provider>

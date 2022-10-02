@@ -13,7 +13,7 @@ export default function Book(props) {
                     <img alt="cover" className="cover-image" src={process.env.PUBLIC_URL + `Images/${Book.bookCover}`} />
                     <div>
                         <div className="title" onClick={() => { buyBook(Book.id) }}>
-                            <Link to="/buybook" className="link">{Book.title}</Link>
+                            <Link to={`/buybook/${Book.id}`} className="link">{Book.title}</Link>
                         </div>
                         <div className="author">{Book.author}</div>
                     </div>
@@ -29,7 +29,8 @@ export default function Book(props) {
                 </>
 
                 :
-                <h1>Sorry.. We can not find your Book </h1>}
+                <h1>Sorry.. We can not find your Book </h1>
+            }
         </>
     )
 }

@@ -11,11 +11,11 @@ function reduceSort(state, action) {
     case "title":
       return (a, b) => (a.title > b.title ? 1 : a.title < b.title ? -1 : 0);
     case "year":
-      return (a, b) => (a.Rating > b.Rating ? 1 : a.Rating < b.Rating ? -1 : 0);
+      return (a, b) => (a.year > b.year ? 1 : a.year < b.year ? -1 : 0);
     case "Rating":
       return (a, b) => (a.Rating > b.Rating ? -1 : a.Rating < b.Rating ? 1 : 0);
     case "price":
-      return (a, b) => (a.Rating > b.Rating ? 1 : a.Rating < b.Rating ? -1 : 0);
+      return (a, b) => (a.price > b.price ? 1 : a.price < b.price ? -1 : 0);
     default:
       return state;
   }
@@ -41,9 +41,11 @@ export default function Library() {
   const [sortFn, dispatchSort] = useReducer(reduceSort, undefined);
   const [categoryFn, dispatchCategory] = useReducer(reduceCategory, {});
 
-  const categorized = books.filter((book) => {
-    return Object.values(categoryFn).every((fn) => fn(book));
-  });
+  const categorized = books
+    .filter((book) => {
+      return Object.values(categoryFn).every((fn) => fn(book));
+    })
+    .sort(sortFn);
 
   //   const sorted = categorized.sort(sortFn);
 
@@ -91,11 +93,13 @@ export default function Library() {
           <label>
             Price-Range:
             <div className="slide-container">
+              <div></div>
               <input
                 type="range"
                 min="50"
                 max="1000"
                 value="500"
+                className="slider"
                 onChange={({ target }) => {
                   dispatchCategory({ type: "price", payload: target.value });
                 }}
@@ -105,19 +109,18 @@ export default function Library() {
         </div>
       </div>
       <div className="library-mainpage">
-        <div className="filter">
-          <div>Sort by:</div>
-          <div className="sort">
-            <select
-              onChange={({ target }) => {
-                dispatchSort({ type: target.value });
-              }}
-            >
-              <option value="title">A-Z</option>
-              <option value="year">New-Old</option>
-              <option value="Rating">Top-Rated</option>
-            </select>
-          </div>
+        <div>Sort by:</div>
+        <div className="sort">
+          <select
+            onChange={({ target }) => {
+              dispatchSort({ type: target.value });
+            }}
+          >
+            <option value="title">A-Z</option>
+            <option value="year">New-Old</option>
+            <option value="Rating">Top-Rated</option>
+            <option value="price">Price</option>
+          </select>
         </div>
         <div className="collection">{library}</div>
       </div>

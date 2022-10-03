@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import { LibraryContext } from "./Contexts/LibraryContext";
 import ProfilePic from "./shakes.png";
 import AddBookForm from "./AddBookForm";
+import styles from "./Library.module.css";
 
 function reduceSort(state, action) {
   const { type } = action;
@@ -38,16 +39,22 @@ function reduceCategory(state, action) {
 
 export default function Library() {
   const { remove, books } = useContext(LibraryContext);
+  const [sideBar, setSideBar] = useState(false);
   const [sortFn, dispatchSort] = useReducer(reduceSort, undefined);
   const [categoryFn, dispatchCategory] = useReducer(reduceCategory, {});
+  const [sliderValue, setSlider] = useState(0);
 
+  function updateSlider({ target }) {
+    let value = target.value;
+    value = Math.floor(value / 100) * 100; //step=100
+    setSlider(value);
+    dispatchCategory({ type: "price", payload: value });
+  }
   const categorized = books
     .filter((book) => {
       return Object.values(categoryFn).every((fn) => fn(book));
     })
     .sort(sortFn);
-
-  //   const sorted = categorized.sort(sortFn);
 
   let library = categorized.map((obj) => {
     return (
@@ -59,56 +66,58 @@ export default function Library() {
   });
 
   return (
-    <div className="library">
-      <div className="library-sidebar">
-        <div className="account">
-          <div className="profile">
-            <img alt="" src={ProfilePic} />
-            <div>Pink Panther</div>
-          </div>
-        </div>
-        <div className="sidebar-footer">
-          <div>
-            <AddBookForm />
-          </div>
-
-          <label htmlFor="books-genre">
-            select a genre:
-            <select
-              id="books-genre"
-              onChange={({ target }) => {
-                dispatchCategory({ type: "genre", payload: target.value });
-              }}
-            >
-              <option value="All">All</option>
-              <option value="Horror">Horror</option>
-              <option value="Sci-Fi">Sci-Fi</option>
-              <option value="Classics">Classics</option>
-              <option value="Action-Adventure">Action-Adventure</option>
-            </select>
-          </label>
-          <br></br>
-          <br></br>
-
-          <label>
-            Price-Range:
-            <div className="slide-container">
-              <div></div>
-              <input
-                type="range"
-                min="50"
-                max="1000"
-                value="500"
-                className="slider"
-                onChange={({ target }) => {
-                  dispatchCategory({ type: "price", payload: target.value });
-                }}
-              ></input>
+    <div className={styles.library}>
+      <button onClick={() => setSideBar((prev) => !prev)}>sideBar</button>
+      {sideBar ? (
+        <div className={styles.librarysidebar}>
+          <div className={styles.account}>
+            <div className={styles.profile}>
+              <img alt="" src={ProfilePic} />
+              <div>Pink Panther</div>
             </div>
-          </label>
+          </div>
+          <div className={styles.sidebarfooter}>
+            <div>
+              <AddBookForm />
+            </div>
+
+            <label>
+              select a genre:
+              <select
+                onChange={({ target }) => {
+                  dispatchCategory({ type: "genre", payload: target.value });
+                }}
+              >
+                <option value="All">All</option>
+                <option value="Horror">Horror</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Classics">Classics</option>
+                <option value="Action-Adventure">Action-Adventure</option>
+              </select>
+            </label>
+            <br></br>
+            <br></br>
+
+            <label>
+              Price-Range:
+              <div className="slide-container">
+                <input
+                  type="range"
+                  min="0"
+                  max="1000"
+                  value={sliderValue}
+                  id="slider"
+                  onChange={updateSlider}
+                ></input>
+              </div>
+            </label>
+          </div>
         </div>
-      </div>
-      <div className="library-mainpage">
+      ) : (
+        ""
+      )}
+
+      <div className={styles.librarymainpage}>
         <div>Sort by:</div>
         <div className="sort">
           <select
@@ -122,7 +131,7 @@ export default function Library() {
             <option value="price">Price</option>
           </select>
         </div>
-        <div className="collection">{library}</div>
+        <div className={styles.collection}>{library}</div>
       </div>
     </div>
   );

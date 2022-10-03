@@ -31,14 +31,6 @@ function LibraryProvider(props) {
     setGet(data, "library");
   }
 
-  const [findBook, setFindBook] = useState("");
-  function search(value) {
-    let Book = books.find((obj) =>
-      obj.title === value || obj.author === value ? obj : null
-    );
-    setFindBook(Book);
-  }
-
   const [signInData, setSignInData] = useState(
     JSON.parse(sessionStorage.getItem("signIn"))
   );
@@ -54,8 +46,6 @@ function LibraryProvider(props) {
         add,
         remove,
         status,
-        search,
-        findBook,
         signIn,
         signInData,
       }}

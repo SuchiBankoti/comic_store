@@ -1,13 +1,12 @@
-import React from "react"
-import Library from "./Library"
-import FrontPage from "./FrontPage"
-import { Routes, Route } from 'react-router-dom';
+import React from "react";
+import Library from "./Library";
+import FrontPage from "./FrontPage";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SideBook from "./SideBook";
 
 export default function App() {
-
   return (
     <div className="body">
       <div className="main">
@@ -26,6 +25,5 @@ export default function App() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-

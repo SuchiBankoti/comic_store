@@ -38,7 +38,7 @@ export default function FrontPage() {
     });
   }
   const newArrivals = books
-    .filter((book, i) => i < 4)
+    .filter((book, i) => i < 6)
     .map((book) => (
       <div key={nanoid()} className="book">
         <Book book={book} />

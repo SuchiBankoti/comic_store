@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { LibraryContext } from "./Contexts/LibraryContext";
 import { FaReadme, FaRupeeSign } from "react-icons/fa";
+
 export default function Book(props) {
   const { status } = useContext(LibraryContext);
   const book = props.book;
@@ -13,30 +14,28 @@ export default function Book(props) {
         className="cover-image"
         src={`/Images/${book.bookCover}`}
       />
-      <div>
+      <div className="book-info">
         <div>
           <Link to={`/buybook/${book.id}`} className="link">
             {book.title}
           </Link>
         </div>
         <div className="author">{book.author}</div>
-        <div>
-          price:{book.price}
-          <FaRupeeSign />
-        </div>
       </div>
       <div>
-        <div
-          style={{ color: book.read ? "pink" : "cadetblue" }}
-          className="read-status"
-        >
-          <FaReadme
-            onClick={() => status(book.id)}
-            style={{ color: book.read ? "#fd5e79" : "#306264" }}
-            className="read-btn"
-          />
-          {book.read ? "Currently reading" : "Read Me"}
-        </div>
+        {book.price}
+        <FaRupeeSign style={{ height: 12 }} />
+      </div>
+      <div
+        style={{ color: book.read ? "pink" : "cadetblue" }}
+        className="read-status"
+      >
+        <FaReadme
+          onClick={() => status(book.id)}
+          style={{ color: book.read ? "#fd5e79" : "#306264" }}
+          className="read-btn"
+        />
+        {book.read ? "Currently reading" : "Read Me"}
       </div>
     </>
   );

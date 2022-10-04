@@ -32,6 +32,11 @@ function reduceCategory(state, action) {
       };
     case "price":
       return { ...state, price: (book) => book.price <= payload };
+    case "lang":
+      return {
+        ...state,
+        land: (book) => payload === "All" || book.lang.includes(payload),
+      };
     default:
       return state;
   }
@@ -97,7 +102,22 @@ export default function Library() {
             </label>
             <br></br>
             <br></br>
-
+            <label>
+              Select Language:
+              <select
+                onChange={({ target }) => {
+                  dispatchCategory({ type: "lang", payload: target.value });
+                }}
+              >
+                <option value="All">All</option>
+                <option value="english">English</option>
+                <option value="spanish">Spanish</option>
+                <option value="hindi">Hindi</option>
+                <option value="french">French</option>
+              </select>
+            </label>
+            <br></br>
+            <br></br>
             <label>
               Price-Range:
               <div className="slide-container">

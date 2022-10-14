@@ -1,12 +1,6 @@
 * {
   box-sizing: border-box;
 }
-.body {
-  background-color: #deebf8;
-  padding: 25px;
-  border: 1px solid #deebf8;
-  border-radius: 10px;
-}
 
 .main {
   display: flex;
@@ -17,34 +11,6 @@
   border-radius: 10px;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-}
-.navbar > .nav-right {
-  display: flex;
-  width: 25%;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 10px;
-}
-
-.navbar > div > img {
-  width: 50px;
-  height: 50px;
-  padding: 10px;
-}
-.nav-left {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  font-family: Arial, sans-serif;
-}
-.homeicon {
-  width: 30px;
-  height: 30px;
-  color: burlywood;
-}
 .rating {
   color: pink;
 }
@@ -68,41 +34,49 @@
   }
 }
 
-.address {
-  width: 20%;
-  padding: 5px;
-}
+
 
 .footer {
-  background-color: cadetblue;
   height: 25%;
   display: flex;
   flex-direction: column;
   padding: 10px;
   overflow: hidden;
+  align-items:center;
+  word-spacing: 5px;
+}
+.contact{
+  display: flex;
+  justify-content:space-around;
+  width:20%;
 }
 
 .book {
   display: flex;
+  flex:1;
+  overflow: hidden;
   flex-direction: column;
   align-items: center;
-  padding: 5px;
-  overflow: hidden;
+  justify-content: space-evenly;
+  padding:0.1rem;
+  border:1px solid black;
+  margin:5px;
 }
 
 .title {
   font-weight: bold;
-  font-size: large;
+  font-size: 0.8rem;
   letter-spacing: 1px;
-  font-family: monospace;
+  cursor: pointer;
 }
 .author {
   font-weight: lighter;
+  font-size: 0.6rem;
   font-family: "Courier New", Courier, monospace;
 }
 .book > img {
-  height: 150px;
-  width: 100px;
+  width:90%;
+  height:50%;
 }
 .read-status {
   display: flex;
@@ -115,17 +89,13 @@
 .book-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   word-break: break-all;
   width: 100%;
-  height: 50px;
+  height:50px;
   padding: 5px;
-  overflow: hidden;
 }
 .book-info > div {
   overflow: hidden;
-  height: 50%;
 }
 
 .buy-page {
@@ -194,11 +164,43 @@
   margin: 5px;
 }
 #slider {
-  -webkit-appearance: none;
   width: 100%;
   height: 5px;
   background-color: gray;
 }
 .slide-container {
   position: relative;
+}
+.sponsor{
+  width:20%;
+  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+.sponsor-first{
+  width:100%;
+}
+.sponsor-img{
+  width:100%;
+}
+.sponsor-info{
+  display: flex;
+  flex-direction: column;
+  text-align:center;
+  padding:10px;
+}
+.account > img {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgb(223, 216, 216);
+  border-radius: 25px;
+}
+.profilePic{
+  width:30px;
+  height:30px;
+  border-radius: 25px;
+  margin:5px;
 }

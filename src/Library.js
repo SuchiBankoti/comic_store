@@ -2,8 +2,8 @@ import React, { useContext, useState, useReducer } from "react";
 import Book from "./Book";
 import { nanoid } from "nanoid";
 import { LibraryContext } from "./Contexts/LibraryContext";
-import ProfilePic from "./shakes.png";
-import AddBookForm from "./AddBookForm";
+
+import Sponsored from "./Sponsored";
 import styles from "./Library.module.css";
 
 function reduceSort(state, action) {
@@ -72,20 +72,25 @@ export default function Library() {
 
   return (
     <div className={styles.library}>
-      <button onClick={() => setSideBar((prev) => !prev)}>sideBar</button>
-      {sideBar ? (
-        <div className={styles.librarysidebar}>
-          <div className={styles.account}>
-            <div className={styles.profile}>
-              <img alt="" src={ProfilePic} />
-              <div>Pink Panther</div>
-            </div>
-          </div>
-          <div className={styles.sidebarfooter}>
-            <div>
-              <AddBookForm />
-            </div>
+      <bar>
+        <button onClick={() => setSideBar((prev) => !prev)} >sideBar</button>
+        <div className={styles.librarysidebar} style={{ display: sideBar ? "block" : "none" }}>
 
+          <div className={styles.filter}>
+            <label>Sort by:
+              <select
+                onChange={({ target }) => {
+                  dispatchSort({ type: target.value })
+                }}
+              >
+                <option value="title">A-Z</option>
+                <option value="year">New-Old</option>
+                <option value="Rating">Top-Rated</option>
+                <option value="price">Price</option>
+              </select>
+            </label>
+            <br></br>
+            <br></br>
             <label>
               select a genre:
               <select
@@ -133,26 +138,13 @@ export default function Library() {
             </label>
           </div>
         </div>
-      ) : (
-        ""
-      )}
+      </bar>
 
-      <div className={styles.librarymainpage}>
-        <div>Sort by:</div>
-        <div className="sort">
-          <select
-            onChange={({ target }) => {
-              dispatchSort({ type: target.value });
-            }}
-          >
-            <option value="title">A-Z</option>
-            <option value="year">New-Old</option>
-            <option value="Rating">Top-Rated</option>
-            <option value="price">Price</option>
-          </select>
-        </div>
-        <div className={styles.collection}>{library}</div>
+      <div className={styles.collection}>{library}</div>
+      <div className="sponsor">
+        <Sponsored />
       </div>
+
     </div>
   );
 }

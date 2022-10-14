@@ -15,7 +15,7 @@ export default function Book(props) {
         src={`/Images/${book.bookCover}`}
       />
       <div className="book-info">
-        <div>
+        <div className="title">
           <Link to={`/buybook/${book.id}`} className="link">
             {book.title}
           </Link>
@@ -24,7 +24,7 @@ export default function Book(props) {
       </div>
       <div>
         {book.price}
-        <FaRupeeSign style={{ height: 12 }} />
+        <FaRupeeSign style={{ height: 10 }} />
       </div>
       <div
         style={{ color: book.read ? "pink" : "cadetblue" }}

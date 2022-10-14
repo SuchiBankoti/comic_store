@@ -9,6 +9,7 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import styles from "./FrontPage.module.css";
 
+
 export default function FrontPage() {
   const { books } = useContext(LibraryContext);
   const [searchedBook, setSearchedBook] = useState([
@@ -26,19 +27,26 @@ export default function FrontPage() {
       );
       return searchArr.length > 0
         ? (prev = searchArr.map((book) => (
-            <div key={nanoid()}>
-              <Book book={book} />
-            </div>
-          )))
+          <div key={nanoid()}>
+            <Book book={book} />
+          </div>
+        )))
         : (prev = (
-            <div>
-              <h1>cannot find book</h1>
-            </div>
-          ));
+          <div>
+            <h1>cannot find book</h1>
+          </div>
+        ));
     });
   }
   const newArrivals = books
-    .filter((book, i) => i < 6)
+    .filter((book, i) => i < 3)
+    .map((book) => (
+      <div key={nanoid()} className="book">
+        <Book book={book} />
+      </div>
+    ));
+  const bestSellers = books
+    .filter((book, i) => i < 3)
     .map((book) => (
       <div key={nanoid()} className="book">
         <Book book={book} />
@@ -47,11 +55,12 @@ export default function FrontPage() {
 
   return (
     <div className={styles.frontpage}>
+
       <div className={styles.header}>
         <div>
           <h1>
             <Link to="/Library" className="link">
-              Browse Our Collection
+              <h1 className={styles.browseHeading}>Browse Our Collection</h1>
             </Link>
           </h1>
         </div>
@@ -81,6 +90,10 @@ export default function FrontPage() {
       <div className={styles.newarrivals}>
         <h3>New Arrivals</h3>
         <div>{newArrivals}</div>
+      </div>
+      <div className={styles.bestSellers}>
+        <h3>BestSeller</h3>
+        <div>{bestSellers}</div>
       </div>
     </div>
   );

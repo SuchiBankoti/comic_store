@@ -1,22 +1,26 @@
 .frontpage {
   display: flex;
   flex-direction: column;
-}
+  
+ 
+  
 
+}
+  
 .header {
   display: flex;
   flex-direction: column;
   height: 50vh;
   justify-content: center;
   align-items: center;
-  background-image: url("./front.png");
-  background-size: cover;
+  
 }
-.header > div > h1 {
-  color: aliceblue;
-  font-size: xx-large;
-  letter-spacing: 5px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.browseHeading{
+  background-image:linear-gradient(45deg, rgb(224, 10, 10), black, #fff);
+   -webkit-text-fill-color: transparent;
+   background-clip: text;
+   font-family:fantasy;
+   letter-spacing: 10px;
 }
 .searchbar {
   border: 1px solid rgb(204, 198, 198);
@@ -38,12 +42,21 @@ form {
   width: 20%;
   overflow: hidden;
 }
+.newarrivals{
+  display: flex;
+}
 .newarrivals > div {
   display: flex;
   padding: 10px;
+  width:30%;
 }
-.newarrivals > div > div {
-  flex: 1;
-  overflow: hidden;
-  margin: 5px;
+
+.bestSellers{
+  display: flex;
+  justify-content: flex-end;
+}
+.bestSellers>div{
+  display: flex;
+  padding: 10px;
+  width:30%;
 }

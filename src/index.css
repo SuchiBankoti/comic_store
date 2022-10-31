@@ -1,24 +1,75 @@
 * {
   box-sizing: border-box;
 }
-
-.main {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #fff;
-  border-radius: 10px;
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  overflow-x: hidden;
+  font-size: 2vh;
 }
 
+.main{
+  width:100%;
+  font-size: 10%;
+  padding:0;
+}
+.middle-page{
+  font-size: 5vw;
+}
+h1,h2,h3,h4{
+  margin:0;
+  padding:0;
+}
 .rating {
   color: pink;
 }
-.heart {
-  width: 35px;
-  height: 45px;
-  padding: 5px;
+/* sign in form */
+.sign-in-btn {
+  background-color:brown;
+  color:white;
+  padding: 1rem;
+  cursor: pointer;
+  width:1px;
 }
+
+.form-container{
+  width:100%;
+  height:100%;
+  background-image: url("./signInback.png");
+  background-size:cover;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-end;
+  align-items: flex-start;
+}
+
+.form-container>button{
+  width:30%;
+  background-color: rgb(3, 7, 32);
+  color: white;
+  border-radius:50%;
+}
+.signIn-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50%;
+  color: rgb(3, 7, 32);
+  font-family: monospace;
+}
+.signIn-form>label{
+  display: flex;
+  flex-direction: column;
+}
+.profile{
+  height:100%;
+  background-image: url("./bomb.png");
+  background-size: cover;
+  opacity: 0.8;
+}
+/* sign in form */
 .link {
   text-decoration: none;
   color: rgb(53, 50, 50);
@@ -28,87 +79,58 @@
   flex-direction: column;
 }
 
-@media only screen and (min-width: 600px) {
-  .content {
-    flex-direction: row;
-  }
+button{
+  border-radius: 1rem;
 }
-
-
-
-.footer {
-  height: 25%;
+/* book css */
+.book{
+  font-size: 1em;
   display: flex;
-  flex-direction: column;
-  padding: 10px;
-  overflow: hidden;
-  align-items:center;
-  word-spacing: 5px;
-}
-.contact{
-  display: flex;
-  justify-content:space-around;
-  width:20%;
-}
-
-.book {
-  display: flex;
-  flex:1;
   overflow: hidden;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  padding:0.1rem;
-  border:1px solid black;
-  margin:5px;
+  background-color:whitesmoke ;
+  font-size:1rem ;
+}
+.book-info{
+  font-size: 2em;
 }
 
-.title {
-  font-weight: bold;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  cursor: pointer;
+.image-container{
+  width:50%;
+  height:70%;
 }
-.author {
-  font-weight: lighter;
-  font-size: 0.6rem;
-  font-family: "Courier New", Courier, monospace;
-}
-.book > img {
-  width:90%;
-  height:50%;
-}
-.read-status {
-  display: flex;
-  justify-content: center;
-}
-
-.read-status {
-  display: flex;
-}
-.book-info {
-  display: flex;
-  flex-direction: column;
-  word-break: break-all;
+.cover-image{
   width: 100%;
-  height:50px;
-  padding: 5px;
+  height:100%;
 }
-.book-info > div {
-  overflow: hidden;
+.read-status{
+  display: flex;
+  cursor:pointer;
 }
 
+.rating-star{
+  color:yellow;
+  height:1rem ;
+  width:1rem;
+}
+.buy-btn{
+  background-color: brown;
+  font-size: 0.5rem;
+  width:1rem;
+  height: 1rem;
+}
+/* book css */
 .buy-page {
   overflow: scroll;
   height: 100vh;
   width: 85%;
   display: flex;
-  padding: 10px;
+  padding: 1rem;
 }
 
 .buy-cover {
   border: 2px solid black;
-  box-shadow: 0 5px 10px;
+  box-shadow: 0 .5rem 1rem;
   width: 180px;
   height: 300px;
   overflow: hidden;
@@ -121,7 +143,7 @@
   width: 50%;
   height: 100%;
   text-align: center;
-  padding: 10px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -134,7 +156,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 10px;
+  padding: 1rem;
 }
 
 .buy-page-right > h1 {
@@ -147,7 +169,7 @@
 }
 .buy-page-right > div > p {
   font-family: sans-serif;
-  letter-spacing: 5px;
+  letter-spacing: .5rem;
 }
 .buy-page-right > div > .year {
   font-size: larger;
@@ -160,12 +182,12 @@
 .add-btn,
 .buy-btn {
   width: 80%;
-  padding: 10px;
-  margin: 5px;
+  padding: 1rem;
+  margin: .5rem;
 }
 #slider {
   width: 100%;
-  height: 5px;
+  height: .5rem;
   background-color: gray;
 }
 .slide-container {
@@ -190,17 +212,25 @@
   display: flex;
   flex-direction: column;
   text-align:center;
-  padding:10px;
+  padding:1rem;
 }
 .account > img {
-  width: 50px;
-  height: 50px;
+  width: 5em;
+  height: 5em;
   border: 1px solid rgb(223, 216, 216);
-  border-radius: 25px;
+  border-radius: 2.5rem;
 }
 .profilePic{
-  width:30px;
-  height:30px;
+  width:3rem;
+  height:3rem;
   border-radius: 25px;
-  margin:5px;
+  margin:.5rem;
 }
+
+/* * {
+  background: #000 !important;
+  color: #0f0 !important;
+  outline: solid #f00 1px !important;
+  padding:0;
+  margin:0;
+} */

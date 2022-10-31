@@ -7,13 +7,14 @@ import SideBook from "./SideBook";
 import Navbar from "./Navbar";
 
 
+
 export default function App() {
   return (
     <div className="main">
       <div>
         <Navbar />
       </div>
-      <div>
+      <div className="middle-page">
         <Routes>
           <Route path="/" element={<FrontPage />} />
           <Route path="/Library" element={<Library />} />

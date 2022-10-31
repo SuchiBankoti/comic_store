@@ -3,32 +3,34 @@ import { createContext } from "react";
 const context = createContext();
 
 function LibraryProvider(props) {
+
+
   const [books, setBooks] = useState(
     JSON.parse(localStorage.getItem("library"))
   );
 
-  function setGet(arr, str, val) {
-    localStorage.setItem(str, JSON.stringify([...arr, val]));
+  function Get(arr, str) {
+    localStorage.setItem(str, JSON.stringify(arr));
     setBooks(JSON.parse(localStorage.getItem(str)));
   }
   function add(value) {
     const data = JSON.parse(localStorage.getItem("library"));
-    setGet(data, "library", value);
+    localStorage.setItem("library", JSON.stringify([...data, value]));
+    setBooks(JSON.parse(localStorage.getItem("library")));
   }
   function remove(id) {
     let data = JSON.parse(localStorage.getItem("library"));
     data = data.filter((obj) => obj.id !== id);
     console.log(data);
     console.log("remove" + id);
-    setGet(data, "library");
+    Get(data, "library");
   }
 
   function status(id) {
     let data = JSON.parse(localStorage.getItem("library"));
     data = data.map((obj) =>
-      obj.id === id ? { ...obj, read: !obj.read } : obj
-    );
-    setGet(data, "library");
+      obj.id === id ? { ...obj, read: !obj.read } : obj);
+    Get(data, "library");
   }
 
   const [signInData, setSignInData] = useState(

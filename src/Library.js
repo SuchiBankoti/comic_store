@@ -2,8 +2,8 @@ import React, { useContext, useState, useReducer } from "react";
 import Book from "./Book";
 import { nanoid } from "nanoid";
 import { LibraryContext } from "./Contexts/LibraryContext";
+import { FaFilter } from "react-icons/fa";
 
-import Sponsored from "./Sponsored";
 import styles from "./Library.module.css";
 
 function reduceSort(state, action) {
@@ -43,7 +43,7 @@ function reduceCategory(state, action) {
 }
 
 export default function Library() {
-  const { remove, books } = useContext(LibraryContext);
+  const { books } = useContext(LibraryContext);
   const [sideBar, setSideBar] = useState(false);
   const [sortFn, dispatchSort] = useReducer(reduceSort, undefined);
   const [categoryFn, dispatchCategory] = useReducer(reduceCategory, {});
@@ -65,15 +65,14 @@ export default function Library() {
     return (
       <div key={nanoid()} className="book">
         <Book book={obj} />
-        <button onClick={() => remove(obj.id)}>Remove</button>
       </div>
     );
   });
 
   return (
     <div className={styles.library}>
-      <bar>
-        <button onClick={() => setSideBar((prev) => !prev)} >sideBar</button>
+      <bar className={styles.bar}>
+        <button onClick={() => setSideBar((prev) => !prev)} >Filters<FaFilter /></button>
         <div className={styles.librarysidebar} style={{ display: sideBar ? "block" : "none" }}>
 
           <div className={styles.filter}>
@@ -140,11 +139,9 @@ export default function Library() {
         </div>
       </bar>
 
-      <div className={styles.collection}>{library}</div>
-      <div className="sponsor">
-        <Sponsored />
+      <div className={styles.collection}>
+        {library}
       </div>
-
     </div>
   );
 }
